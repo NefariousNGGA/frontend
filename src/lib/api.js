@@ -1,4 +1,5 @@
-const API_BASE = import.meta.env.DEV ? '/api' : '/api';
+const API_BASE = 'https://backend-xrcl.onrender.com/api';
+//                         ↑↑↑ REPLACE WITH YOUR ACTUAL BACKEND URL
 
 const api = {
   async request(endpoint, options = {}) {
@@ -11,29 +12,18 @@ const api = {
       headers['X-Plato-Token'] = token;
     }
 
-    const response = await fetch(API_BASE + endpoint, {
-      ...options,
-      headers
-    });
+    const url = API_BASE + endpoint;
+    const response = await fetch(url, { ...options, headers });
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
       throw new Error(error.error || 'Request failed');
     }
-
     return response.json();
   },
 
-  get(endpoint) {
-    return this.request(endpoint, { method: 'GET' });
-  },
-
-  post(endpoint, data) {
-    return this.request(endpoint, {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
-  }
+  get(endpoint) { return this.request(endpoint, { method: 'GET' }); },
+  post(endpoint, data) { return this.request(endpoint, { method: 'POST', body: JSON.stringify(data) }); }
 };
 
 export default api;
