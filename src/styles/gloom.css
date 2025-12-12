@@ -1,0 +1,53 @@
+/* Gloomy theme */
+body.gloomy {
+  --bg: #0f0f13;
+  --surface: #1a1a1d;
+  --text: #e0e0e5;
+  --muted: #888;
+  --accent: #4a6b78;
+  --border: #2a2a2e;
+}
+
+/* Lighter (but still moody) theme */
+body.lighter {
+  --bg: #1a1a1d;
+  --surface: #252529;
+  --text: #f0f0f5;
+  --muted: #aaa;
+  --accent: #6a8c98;
+  --border: #3a3a3e;
+}
+
+/* Shared styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
+
+input, textarea {
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+button {
+  cursor: pointer;
+}
